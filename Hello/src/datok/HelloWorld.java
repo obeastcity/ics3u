@@ -1,0 +1,16 @@
+package datok;
+/** 
+ * An Adventure program.java
+ * Fun and thrilling time traveling game!!
+ * 21/02/2017
+ * @author Sonam Datok & Jack Durrett
+ *
+ */
+public class HelloWorld {
+
+	public static void main(String[] args) {
+    System.out.println("Hello Darkness my old Friend !");
+
+	}
+
+}
