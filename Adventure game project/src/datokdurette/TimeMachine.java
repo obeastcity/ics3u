@@ -176,7 +176,7 @@ public class TimeMachine {
 							else if (choiceSix.equals("b")){
 								c.println("That's the wrong direction your headed buddy.. \nHis previous suspicions escalate and he kills you with one swing.. ");
 							}
-						}
+						} 
 					}
 
 				}else if (time.equals("b")){   //1800s (cowboy time)
