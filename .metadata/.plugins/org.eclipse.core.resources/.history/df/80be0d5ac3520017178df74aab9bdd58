@@ -1,0 +1,43 @@
+package Culminating;
+
+import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
+import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
+import lejos.nxt.UltrasonicSensor;
+import lejos.robotics.subsumption.Arbitrator;
+public class Ultrasonic implements Behavior {
+
+	private boolean suppressed = false;
+	
+	UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
+	@Override
+	public boolean takeControl() {
+
+		while (sonar.getDistance() < 10){
+			return true; //give control to Ultrasonic
+		}
+
+		return false;
+	}
+
+	@Override
+	public void action() { 
+		suppressed = false;
+		while (sonar.getDistance() < 10){  //when something is within 10cm -to dodge obstacles
+			Motor.A.stop();
+			Motor.B.stop();
+			
+			
+			Thread.yield();
+		}
+
+	}
+
+	@Override
+	public void suppress() {
+		suppressed = true;
+
+	} //to dodge obstacles
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;SpookySeason.java&apos; to &apos;SampleProblems/src/spooky&apos;&#x0D;&#x0A;- Original project: &apos;SampleProblems&apos;&#x0D;&#x0A;- Destination element: &apos;SampleProblems/src/spooky&apos;&#x0D;&#x0A;- Original element: &apos;SpookySeason.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;spooky" element1="/src&lt;{SpookySeason.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1491934050035" units="1" version="1.0"/>
+</session>

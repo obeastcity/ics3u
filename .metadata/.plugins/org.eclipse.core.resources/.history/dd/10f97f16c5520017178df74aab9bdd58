@@ -1,0 +1,27 @@
+package Culminating;
+
+import lejos.nxt.LightSensor;  //importing all sensors and ports
+import lejos.nxt.SensorPort;
+import lejos.nxt.SoundSensor;
+import lejos.nxt.UltrasonicSensor;
+import lejos.robotics.subsumption.Arbitrator;
+import lejos.robotics.subsumption.Behavior;
+
+public class MyArbitrator {
+	
+	public static void main(String args){   //main method
+		SoundSensor clap = new SoundSensor(SensorPort.S2);
+		LightSensor light = new LightSensor(SensorPort.S1);
+		UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
+		
+	Behavior b1 = new HearSound(clap);
+	Behavior b2 = new Ultrasonic(sonar);
+	Behavior b4 = new CircleDrive(light);
+	Behavior b5 = new Exit();
+	Behavior[] behaviors = {b1, b4, b2, b5};  //priority (lowest-->highest)
+	
+	Arbitrator arby = new Arbitrator(behaviors);  
+	arby.start();
+	}
+	
+}

@@ -1,0 +1,50 @@
+package datok;
+
+import java.util.Scanner;
+/***
+ * Factorial.java
+ * MY UNIT 2 PROJECT-Greatest Common Factor
+ * 04/03/17
+ * @author Sonam Datok
+ */
+public class Gcf {
+	
+	/**
+	 * This is where the program starts
+	 * @param args
+	 */
+	public static void main(String[] args) {   
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Hello, please enter a number");
+		String s = scan.nextLine();
+		int x = Integer.parseInt(s);
+		System.out.println("Now please enter another number");
+		String r = scan.nextLine();
+		int y = Integer.parseInt(r);
+		System.out.println("The greatest common factor of your number is..."+ gcf(x,y));
+		
+	}
+	/**
+	 * returns the greatest common factor of the two numbers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static int gcf(int a, int b){
+		int big = Math.max(a, b);
+		int small = Math.max(a,b);
+		if (big == 0 || small == 0){
+			return 0;
+		}else if (big==1 || small==1){
+			return 1;
+		}else{
+			for (int i=small; i>1; i--){
+				if (big % i == 0 && small % i == 0){
+					return i;
+				}	
+			}
+			return 1;
+		}
+		
+	}
+}

@@ -1,0 +1,448 @@
+package datokdurette;
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import hsa_new.Console;
+
+public class TimeMachine {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Console c = new Console("AnAdventureGame");  
+		String restart  = "";
+		c.setTextColor(Color.black);
+
+		do{  //restart
+			restart  = "";
+			c.clear();
+			BufferedImage timeMachine = null;						//loading ALL IMAGES
+			BufferedImage battleField = null;
+			BufferedImage sword = null;
+			BufferedImage horseKnight = null;
+			BufferedImage arrow = null;
+			BufferedImage blood = null;
+			BufferedImage paladin = null;
+			BufferedImage strandedHorse = null;
+			BufferedImage town = null;
+			BufferedImage gambling = null;
+			BufferedImage saloon = null;
+			BufferedImage horseChase = null;
+			BufferedImage mansionstart = null;
+			BufferedImage stairs = null;
+			BufferedImage threedoors = null;
+			BufferedImage littlegirl = null;
+			BufferedImage clock = null;
+			BufferedImage crystal = null;
+			try {
+				timeMachine = ImageIO.read(new File("pictures/timemachine.jpg"));
+				battleField = ImageIO.read(new File("pictures/battlefield.jpg"));
+				sword = ImageIO.read(new File("pictures/sword_PNG5516.png"));
+				horseKnight = ImageIO.read(new File("pictures/knight on horse.jpg"));
+				arrow = ImageIO.read(new File("pictures/arrow.png"));
+				blood = ImageIO.read(new File ("pictures/blood.gif"));
+				paladin = ImageIO.read(new File("pictures/paladinunphotoshopped.jpg"));
+				strandedHorse = ImageIO.read(new File("pictures/stranded horse.jpg"));
+				town = ImageIO.read(new File("pictures/town.jpg"));
+				gambling = ImageIO.read(new File("pictures/gambling.jpg"));
+				saloon = ImageIO.read(new File("pictures/cowboyentering.jpg"));
+				horseChase = ImageIO.read(new File("pictures/horsechase.jpg"));
+				mansionstart = ImageIO.read(new File("pictures/mansionstart.jpg"));
+				stairs = ImageIO.read(new File("pictures/stairs.jpg"));
+				threedoors = ImageIO.read(new File("pictures/threedoors.jpg"));
+				littlegirl = ImageIO.read(new File("pictures/littlegirl.jpg"));
+				clock = ImageIO.read(new File("pictures/clock.jpg"));
+				crystal = ImageIO.read(new File("pictures/crystal.jpg"));
+			} catch (IOException e) {
+				System.err.println("There was an error loading the image.");
+				e.printStackTrace();
+			}
+			c.drawImage (timeMachine, 0, 0, null);
+			c.println("In the basement of Runnymede CI, during your 3rd period spare, you find a time \nmachine!");
+			c.println("You enter the gnarly contraption, and are met with a difficult dilemma. Which \ntime period do you travel to??");
+			c.println("(Type a = 1100s, b = 1800s, c = 1990s)");
+			String time = c.readString();
+			boolean flag = true;
+			while (flag == true)
+			{
+				flag = false;
+				if (time.equals("a"))   //1100s (medieval time)
+				{
+					c.clear();
+					c.drawImage (battleField, 0, 0, null);
+					c.println("You open your eyes and lay witness to the remains of a large medieval battle \nfield. Very few Warriors remain.");
+					c.println("(Type a = Enter battle field, b = run)");
+					String choiceOne = c.readString();
+					if (choiceOne.equals("a"))
+					{
+						c.drawImage (sword, 200, 200, 200, 200, null);       //prints the sword
+						c.println("You spot a magnificent sword within arms reach.  ");
+						c.println("Type a = observe your surroundings, b = grab the sword.");
+						String choiceTwo = c.readString();
+						if (choiceTwo.equals("a")){
+							c.clear();
+							c.drawImage(battleField, 0, 0, null);
+							c.drawImage(arrow, 200, 200, 300, 300, null);
+							c.println("You spot an arrow soaring towards you!");    //TIMER
+							c.println("QUICKLY TYPE -avoid- TO DODGE!");
+							long startTime = System.currentTimeMillis();
+							
+							String timedEvent = c.readString();
+							long endTime = System.currentTimeMillis();
+							double a = endTime - startTime;
+							if(a <= 4000){
+								if (timedEvent.equals("avoid")){
+									c.println("You survived. Thou heads on towards a humble town where the time machine lies. You travel back to yonder !");
+								}else{
+									c.drawImage (blood, 200, 200, 400, 400, null);
+									c.println("you counldn't dodge in time! you die!");
+								}
+							}else{
+								c.drawImage (blood, 200, 200, 400, 400, null);
+								c.println("you counldn't dodge in time! you die!");
+							}
+							
+
+						}else if (choiceTwo.equals("b")){
+							c.clear();
+							c.drawImage(horseKnight, 0, 0, null);
+							c.println("A horse riding warrior barrels towards thou, moving very swiftly.");
+							c.println("(Type a = flee, b = attack with your sword)");
+							String choiceThree = c.readString();
+
+							if (choiceThree.equals("a")){
+								c.println("He gallops behind swiftly and slays thou down most dishonorably..");
+							}else if (choiceThree.equals("b")){
+								int rand = (int) (Math.random() * 2) + 1;    //generating random # 1-2
+								if(rand == 1){
+									c.clear();
+									c.println("CLASH ! Blood splurges across the deep blue sky as you win the duel \n You gain honor of the highest merit & live a lavish life in the 1100s.");
+								}else if (rand == 2){
+									c.println("A fetal death in a matter seconds.. never the less, you died valiantly ... ");
+								}
+							}
+						}
+
+					}else if (choiceOne.equals("b")){
+						c.clear();
+						c.drawImage(paladin, 0, 0, null);
+						c.println("A little ways down the path, you are approached by a paladin !!\nTO WHOM DOES THOU LOYALTY LAY WITH?! He proclaims.");
+						c.println("(Type a = King Danaforth, b = Duke Bishop)");
+						String choiceFour = c.readString();
+						if(choiceFour.equals("a")){         //KING DANAFORTH PATH
+							c.clear();
+							c.println("Are you prepared to meet death?");
+							c.println("(Type a = yes, b = no)");
+							String choiceFive = c.readString();
+							if (choiceFive.equals("b")){
+								c.clear();
+								c.println("You are banished from all neighbouring towns and never find your way home again.");
+							}else if (choiceFive.equals("a")){
+								c.clear();
+								c.println("You DIED...");
+							}
+						}else if (choiceFour.equals("b")){  //DUKE BISHOP PATH
+							c.println("Ah, allo'! Where ya headed friend of the north?");
+							c.println("(Type a = Town, b = Battlefield)");
+							String choiceSix = c.readString();
+							if (choiceSix.equals("a")){
+								c.println("You head into Town & find the time machine. \nGetting home, You have many new tales to tell..");
+							}
+							else if (choiceSix.equals("b")){
+								c.println("That's the wrong direction your headed buddy.. \nHis previous suspicions escalate and he kills you with one swing.. ");
+							}
+						}
+
+
+
+
+					}
+
+				}else if (time.equals("b")){   //1800s (cowboy time)
+					c.clear();
+					c.drawImage (strandedHorse, 0, 0, null);
+					c.println("You open your eyes to find yourself in a desert. There is a town in the horizon.To your right you see a stranded black stallion with a deadman beside it.");
+					c.println("(Type a = take the horse, b = walk)");
+					String choiceSeven = c.readString();
+					if (choiceSeven.equals("a")){         //TAKING HORSE
+						c.clear();
+						c.drawImage(town, 0, 0, c.getWidth(), c.getHeight(), null);
+						c.println("*OH NO! I'D KNOW THAT HORSE FROM ANYWHERE!!!*");
+						c.println("         ...  ? \nThe towns people have mistaken you for the Notorious Bandit El Drogo.\n(Type a = enter saloon, b = leave town)");
+						String choiceEight = c.readString();
+						if (choiceEight.equals("a")){   //into saloon
+							c.clear();
+							c.drawImage (gambling, 0, 0, c.getWidth(), c.getHeight(), null);
+							c.println("Walking in through the doors to the saloon, you are greeted by a group of \nbandits.\nThey invite you to gamble\n(Type 1, 2, or 3)");
+							int gamble = c.readInt();
+							int randTwo = (int) (Math.random() * 3) + 1;
+							if (gamble == randTwo){
+								c.println("You win 3 gold coins and find your Time Machine home ! ");
+							}
+							else{
+								c.println("Sweet nibblets you lost ! Unable to pay in their currency of gold coins. \n        BANG!\nShot on the spot.");
+							}
+						}else if (choiceEight.equals("b")){   //leave town
+							c.clear();
+							c.drawImage (horseChase, 0, 0, c.getWidth(), c.getHeight(), null);
+							c.println("*gallop gallop gallop..*\nYou look over your shoulder and see the Sheriff chasing you on his horse!\n(Type a = surrender, b = duel");
+							String choiceNine = c.readString();
+							if (choiceNine.equals("a")){
+								c.println("The Sheriff arrests you and the rest of your miserable days are spent behind bars partner");
+							}else{
+								c.println("**PEW PEW**\nHe collapses into a pool of blood. You search the Sheriff's pockets and find \na map! \n(Type a = follow it, b = ignore)");
+								String choiceTen = c.readString();
+								if (choiceTen.equals("a")){
+									c.println("Beat the devil around the stump partner you just found yourself barrels of gold!\nThousands of gold coins accompany you on your journey home.");
+								}else if (choiceTen.equals("b")){
+									c.println("The bounty on your head is deadbeat.. Your deadmeat!\nHunted down by other bandits, your story comes to a dreadful end.. ");
+								}
+
+							}
+
+						}
+					}else if (choiceSeven.equals("b")){   //WALKING
+						c.clear();
+						c.drawImage (saloon, 0, 0, c.getWidth(), c.getHeight(), null);
+						c.println("Several exhuasting hours later you arrive at the town.\nIn need of a blowhardy drink, you enter the saloon.. You spot a beautiful bartender at the counter\n(Type a = approach, b = ignore");
+						String choiceEleven = c.readString();
+						if (choiceEleven.equals("a")){
+							c.println("You lay your eyes on a most grand site! Druken in love, do you compliment \nor show your futuristic phone?\n(Type a = compliment, b = show phone)");
+							String choiceTwelve = c.readString();
+							if (choiceTwelve.equals("a")){
+								c.println("The bartender blushes like a soft solder in a texas tornado <3 :) \nCONGRATULATIONS !! You love birds get married and live on her ranch.");
+							}else{
+								c.println("The bartender SHRIEKS ! \nALIEN! YOU'RE AN ALIEN!! \n    ...\nAlone once again.. you sip your moonshine in sorrow...");
+							}
+						}else{
+							c.println("It seems someone else had their eye on the bartender too, as they get grabbed \nby a bandit. \n(Type a = kill the bandit, b = reason with him)");
+							String choiceThirteen = c.readString();
+							if(choiceThirteen.equals("a")){
+								c.println("**POW POW POW !**\nThree shots ring out of your revolver as the bandit drops dead...\nThe bartender thanks you for saving her and you two fall deeply in love.\nYou successfully marry and live happily together on her small ranch.");
+							}else{
+								c.println("You ask him to stop, and he suddenly has a scary look on his face..\nThe bandit pulls out his gun and shoots you in the chest...");
+							}
+						}
+
+
+					}	
+				}else if (time.equals("c")){   //1990s (scary time)
+
+					String choiceC="";
+					String choiceB;
+					int aba;
+					int aab;
+					int baa;
+					int bab;
+					String choiseA = "";
+					do{ // creating a "do-while" loop
+						c.clear();
+						c.drawImage (mansionstart, 0, 0, c.getWidth(), c.getHeight(), null);
+						c.println("you look upon a dark mansion with broken \nwindows and a large wooden door. lightning strikes \nand the door seems to beckon you.");
+						c.println("(Type a = enter, b = leave)");
+						choiseA = c.readLine();
+
+						aba = (int) (Math.random() * 10) + 1; //putting 4 random numbers in an array
+						aab = (int) (Math.random() * 10) + 1;
+						bab = (int) (Math.random() * 10) + 1;
+						baa = (int) (Math.random() * 10) + 1;
+						int[] aArray = { aba, aab, baa, bab };
+
+
+						if (choiseA.equals("a")) {
+
+							c.clear();
+							c.println("upon entering the house, you see a plaque \nwith the numbers:");
+							for (int i = 0; i < aArray.length; i++) // printing 4 random numbers in the array
+
+							{
+								c.println(aArray[i]);
+							}
+							do{	
+								c.clear();
+								c.drawImage (stairs, 0, 0, c.getWidth(), c.getHeight(), null);
+								c.println("You see another door on the ground floor\n and a staircase going upwards.");
+								c.println("(Type a = ground floor, b = stairs)");
+								choiceB = c.readLine();
+								if (choiceB.equals("a")) {
+									c.clear();
+
+									c.drawImage (threedoors, 0, 0, c.getWidth(), c.getHeight(), null);
+									c.println("You see three doors with a plaque above them stating that if you \ncontinue, you will have a one in three chance of success.");
+									c.println("(Type a = continue, b = go back.)");
+									choiceC = c.readLine();
+
+
+
+									if (choiceC.equals("a")){
+										
+										choiceC = "";
+										int coolDoor;
+										c.println("please type either 1, 2 0r 3.");
+										coolDoor = (int) (Math.random() * 3) + 1; // generating a random from 1 to 3
+										int choiceD = c.readInt();
+										if (choiceD  == coolDoor){
+											c.clear();
+											c.drawImage (timeMachine, 0, 0, null);
+											c.println("you obtain riches beyond your wildest dreams,\n and return to the present.");
+										
+										}else{
+											c.setTextBackgroundColor(Color.black);;
+											c.clear();
+											c.setTextColor(Color.red);
+											choiceC = "";
+											c.println("You fall into a pit of spikes and die!");
+										}
+									}
+
+								} else if (choiceB.equals("b")) {
+									c.clear();
+									c.drawImage (littlegirl, 0, 0, c.getWidth(), c.getHeight(), null);
+									c.println("upon reaching the second floor, you \nsee the ghost of a small girl.");
+									c.println("(Type a = approach, b = flee. )");
+									choiceC = "";
+									String choiceE = c.readLine();
+
+									if (choiceE.equals("a")){
+										choiceC = "";
+										c.println("speaking in a barely audible whisper, the young \naparation says she needs your help.");
+										c.println("(Type a = help her, b  = don't help her)");
+										String choiceF = c.readLine();
+										if (choiceF.equals("a")){
+				
+											choiceC = "";
+											c.println("She explains that a curse has been placed upon her \nand the only way to revert it is to aquire a \nmagical crystal, located on the roof.");
+											c.println("(Type a  = more stairs, b = elevator.)");
+											String choiceJ  = c.readLine();
+											if (choiceJ.equals("a")){
+												c.clear();
+												choiceC = "";
+												c.println("Half way to the roof, you are blocked by rubble.");
+												c.println("(Type a = body slam, b = turn around)");
+												String ChoiceK  = c.readLine();
+
+												if (ChoiceK.equals("a")){
+													c.clear();
+													c.drawImage (crystal, 0, 0, c.getWidth(), c.getHeight(), null);
+													choiceC = "";
+													c.println("You break through, and see a massive crystal.\nIt is green in colour and is at least three metres tall.");
+													c.println("(Type a = give ghost the emerald, b = take it for yourself"); 
+													String choiceL = c.readLine();
+													if (choiceL.equals("a")){
+														
+														c.println("You return to the present, good as new, with \na sizable shard of pure emerald!");
+													}else{
+														c.setTextBackgroundColor(Color.black);; 
+														c.clear();
+														c.setTextColor(Color.red);
+														c.println("The ghost casts you off the roof, killing \nyou on contact!");
+													}
+
+												}else{
+													c.setTextBackgroundColor(Color.black);
+													c.clear();
+													c.setTextColor(Color.red);
+													c.println("The ghost runs you through with shrapnel!!.");
+												}
+
+
+											}else if(choiceJ.equals("b")){
+												c.setTextBackgroundColor(Color.black);
+												c.clear();
+												c.setTextColor(Color.red);
+												c.println("upon entering the elevator, it plummets down and you are crushed by its ceiling.");
+												c.println("(why would an old house have a working elevator!?)");
+
+											}
+
+
+
+										}else if (choiceF.equals("b")){
+											c.setTextBackgroundColor(Color.black);
+											c.clear();
+											c.setTextColor(Color.red);
+											c.println("An invisible wall slams you down the stairs \nand your legs break on contact.");
+											c.println("(Type a = crawl to exit, b = crawl to the wall.)");
+											String choiceG = c.readLine();
+
+											if (choiceG.equals("a")){
+												
+												c.println("A massive gullitone falls from the ceiling, beheading you!");
+
+											}else if (choiceG.equals("b")){
+												c.clear();
+												c.drawImage (clock, 0, 0, c.getWidth(), c.getHeight(), null);
+												c.println("You see a small door at the base of the wall, locked by a four number padlock. ");
+												c.println("(Type four numbers in the correct order. Press enter after each input.)");
+												int[] userNumbers = { c.readInt(), c.readInt(), c.readInt(), c.readInt()}; // receiving four inputs from the user and putting them in an array
+												boolean correct = true;
+												choiseA = "c";
+
+
+												for (int i = 0; i < userNumbers.length; i++){
+													if (aArray[i] != userNumbers[i]){
+														correct  = false; // method of telling whether or not the user was correct
+													}
+												}
+												if (correct = true){
+													c.println("you are warped into present time. \nYour legs have been miraculasly \nhealed and you can now fly!");
+												}else{
+													c.println("the ghost pulls out your teeth and \nthen impales you with them.");
+												}
+
+											}
+
+										}
+
+
+									}else if (choiceE.equals("b")){
+										
+										c.setTextBackgroundColor(Color.black);
+										c.clear();
+										c.setTextColor(Color.red);
+										c.println("The ghost appears infront of you, and \nremoves your head from your torso. (you die)");
+									}
+
+								}
+
+							}while(choiceC.equals("b"));
+						}else if (choiseA.equals("b")){             //leads to the very first if or death
+							c.clear();
+							c.drawImage (mansionstart, 0, 0, c.getWidth(), c.getHeight(), null);
+							c.println("You are unable to leave the front yard. An invisible \nwall seems to be blocking your path.");
+							c.println("(Type a = go back, b = wait.)");
+							String choiceH = c.readLine();
+							if (choiceH.equals("b")){
+								c.clear();
+								c.drawImage (mansionstart, 0, 0, c.getWidth(), c.getHeight(), null);
+								c.setTextColor(Color.red);
+								c.println("A sythe appears from thin air, slicing you in half.");
+								choiseA = "C";
+							}
+
+						}
+					}while(choiseA.equals("b")); // completing the do-while loop
+
+
+				}else{
+					flag = true;
+					c.println("Please enter a, b or c.");  //if they type anything other than a b or c
+					time = c.readString();
+
+
+
+				}
+			}
+			c.println("Would you like to play again?");   //play again option
+			c.println("(Type a = yes, b = no)");
+			restart  = c.readLine();
+		}while(restart.equals("a"));
+	}
+}
+
+

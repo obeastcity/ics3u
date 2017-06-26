@@ -1,0 +1,26 @@
+package Culminating;
+
+import lejos.nxt.Button;
+import lejos.robotics.subsumption.Behavior;
+
+public class Exit implements Behavior {
+
+	@Override
+	public boolean takeControl() {
+		if (Button.ESCAPE)
+		return false;
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void suppress() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

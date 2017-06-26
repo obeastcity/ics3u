@@ -1,0 +1,46 @@
+package Culminating;
+
+import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
+import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
+import lejos.nxt.UltrasonicSensor;
+import lejos.robotics.subsumption.Arbitrator;
+public class Ultrasonic implements Behavior {
+
+	private boolean suppressed = false;
+	
+	UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
+	@Override
+	public boolean takeControl() {
+
+		if (sonar.continuous() < 10){
+			return true; //give control to CircleDrive
+		}
+
+		return false;
+	}
+
+	@Override
+	public void action() {
+		while (sonar.continuous() < 10){
+			Motor.A.stop();
+			Motor.B.stop();
+			Delay.msDelay(2000);
+			Motor.A.rotate(720); 
+			Delay.msDelay(2000);
+			Motor.A.forward();
+			Motor.B.forward();
+			Delay.msDelay(5000);
+			Thread.yield();
+		}
+
+	}
+
+	@Override
+	public void suppress() {
+		suppressed = true;
+
+	} //to dodge obstacles
+
+}

@@ -1,0 +1,43 @@
+package Culminating;
+
+import lejos.robotics.subsumption.Behavior;
+import lejos.nxt.SoundSensor;
+import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
+import lejos.util.Delay;
+
+public class HearSound implements Behavior {  //begin program upon clap
+	private boolean suppressed = false;
+	private SoundSensor clap;
+	
+	public HearSound(SoundSensor ss){
+		this.clap = ss;
+	}
+	
+	@Override
+	public boolean takeControl() {
+		return clap.readValue() > 100;
+	}
+
+	@Override
+	public void action() {
+		suppressed = false;
+		
+		while (!suppressed){
+			Motor.A.setSpeed(500);
+			Motor.B.setSpeed(500);
+			Motor.A.forward();
+			Motor.B.forward();
+			Delay.msDelay(500);
+			Thread.yield();
+		}
+
+		
+	}
+
+	@Override
+	public void suppress() {
+		suppressed = true;
+	}
+
+}

@@ -1,0 +1,17 @@
+package datok;
+
+import java.util.Scanner;
+/***
+ * PennyPitch.java
+ * @author Sonam Datok
+ *
+ */
+public class PennyPitch {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("hey hey this is the Penny-Pitch program step right up and give it a shot! ");
+
+	}
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="lejos.nxt.LCD"/>
+<fullyQualifiedTypeName name="lejos.util.Delay"/>
+<fullyQualifiedTypeName name="lejos.robotics.subsumption.Arbitrator"/>
+<fullyQualifiedTypeName name="lejos.robotics.subsumption.Behavior"/>
+<fullyQualifiedTypeName name="lejos.nxt.Button"/>
+<fullyQualifiedTypeName name="lejos.nxt.SensorPort"/>
+<fullyQualifiedTypeName name="lejos.nxt.LightSensor"/>
+<fullyQualifiedTypeName name="lejos.nxt.Motor"/>
+</qualifiedTypeNameHistroy>

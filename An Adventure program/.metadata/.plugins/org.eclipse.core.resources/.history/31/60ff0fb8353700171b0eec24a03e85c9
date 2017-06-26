@@ -1,0 +1,23 @@
+package datok;
+
+import java.util.Scanner;
+/***
+ * PennyPitch.java
+ * @author Sonam Datok
+ *
+ */
+public class PennyPitch {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("hey hey this is the Penny-Pitch program step right up and give it a shot!\nYou get 10 pennies to throw and at the end of all throws, if 3 of the same prize tile \nare covered at the end, you WIN that prize!");
+		System.out.println("Type start to begin");
+		String start = scan.nextLine();
+		if (start.equals("start")){
+				
+		}else{
+		System.out.println("thanks for coming.");
+		}
+	}
+
+}

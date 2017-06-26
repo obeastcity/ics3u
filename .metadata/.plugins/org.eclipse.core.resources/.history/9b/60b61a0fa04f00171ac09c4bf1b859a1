@@ -1,0 +1,38 @@
+package com.mydomain;
+
+import lejos.nxt.SensorPort;  //importing all of the sensors and the port
+import lejos.nxt.LightSensor;
+import lejos.nxt.Motor;
+import lejos.nxt.SoundSensor;
+import lejos.util.Delay;
+import lejos.nxt.Button;
+
+public class ObstacleProgram {
+	/***
+	 * Sonam Datok
+	 * Ultrasound Program
+	 * 12/06/17
+	 * @param  
+	 */
+
+	public static void main(String[] args) {
+		SoundSensor sound = new SoundSensor(SensorPort.S1);
+		while (!Button.ESCAPE.isDown()) {
+
+			for (int i = 0; i < 100; i++) {
+
+				if (sound.readValue() > 20){
+					Motor.A.setSpeed(4000);
+					Motor.B.setSpeed(4000);
+					Motor.A.forward();
+					Motor.B.forward();
+					Delay.msDelay(100000);
+				}
+			}
+
+
+		}
+
+	}
+}
+

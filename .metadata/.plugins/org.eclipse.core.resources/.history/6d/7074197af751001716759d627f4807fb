@@ -1,0 +1,59 @@
+package Culminating;
+
+import lejos.nxt.Button;
+import lejos.nxt.LightSensor;
+import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
+import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
+
+public class CircleDrive implements Behavior {
+
+	private boolean suppressed = false;
+	LightSensor light = new LightSensor(SensorPort.S1);
+	@Override
+	public boolean takeControl() {
+		//take control when black circle is found
+		light.getLightValue();
+		
+		
+		if (light.getLightValue() <= 40){
+			return true; //give control to CircleDrive
+		}
+		
+		return false;
+	}
+
+	@Override
+	public void action() {
+		int sensorReading;
+		int button = Button.readButtons();
+		while(button ==0){
+		Motor.B.setSpeed(360);
+		Motor.A.setSpeed(360);
+		Motor.B.forward();
+		Motor.A.forward();
+		sensorReading = light.getLightValue();
+		if (sensorReading > 50 ){
+			Motor.B.stop();
+			Delay.msDelay(500);
+			Motor.B.forward();
+		}
+		sensorReading = light.getLightValue();
+		button = Button.readButtons();
+		}
+		Motor.B.stop();
+		Motor.A.stop();
+		
+	}
+
+	@Override
+	public void suppress() {
+		suppressed = true;
+		
+	}
+	
+	
+	}
+
+

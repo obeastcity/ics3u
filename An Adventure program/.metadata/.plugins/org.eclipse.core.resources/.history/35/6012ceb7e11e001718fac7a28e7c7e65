@@ -1,0 +1,18 @@
+package spooky;
+
+	import java.util.Scanner;
+	/***
+	 * SumDigits.java
+	 * MY UNIT 2 PROJECT-sumdigits
+	 * 03/31/17
+	 * @author Sonam Datok
+	 */
+public class SpookySeason {
+	
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

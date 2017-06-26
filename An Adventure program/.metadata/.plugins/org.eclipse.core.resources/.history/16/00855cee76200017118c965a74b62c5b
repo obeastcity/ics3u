@@ -1,0 +1,19 @@
+package rotatingletters;
+
+import java.util.Scanner;
+/***
+ * RotatingLetters.java
+ * SampleProblems
+ * 04/11/17
+ * @author Sonaam Dattok, Matthew Seffttel, Jacckk Durreette
+ */
+public class RotatingLetters {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Hello, please enter a word to be used on the sign. ");
+		
+		}
+	}
+
+}

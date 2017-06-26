@@ -1,0 +1,16 @@
+package Culminating;
+
+import lejos.robotics.subsumption.Behavior;
+
+public class Arbitrator {
+	public static void main(String args){
+	Behavior b1 = new HearSound();
+	Behavior b2 = new Ultrasonic();
+	Behavior b3 = new Forward();
+	Behavior[] behaviors = {b3, b1, b2};
+	
+	Arbitrator arby = new Arbitrator(behaviors);
+	arby.start();
+	}
+	
+}

@@ -1,0 +1,28 @@
+package Culminating;
+
+import lejos.robotics.subsumption.Behavior;
+import lejos.nxt.SoundSensor;
+import lejos.nxt.Motor;
+import lejos.util.Delay;
+
+public class HearSound implements Behavior {
+
+	@Override
+	public boolean takeControl() {
+		
+		return false;
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void suppress() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
